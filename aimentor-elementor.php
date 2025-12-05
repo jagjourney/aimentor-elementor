@@ -1123,6 +1123,7 @@ require_once AIMENTOR_PLUGIN_DIR . 'includes/providers/class-aimentor-anthropic-
 require_once AIMENTOR_PLUGIN_DIR . 'includes/providers/class-aimentor-openai-provider.php';
 require_once AIMENTOR_PLUGIN_DIR . 'includes/knowledge-base.php';
 require_once AIMENTOR_PLUGIN_DIR . 'includes/analytics.php';
+require_once AIMENTOR_PLUGIN_DIR . 'includes/class-pro-hooks.php';
 
 if ( class_exists( 'AiMentor_Provider_Interface' ) && ! class_exists( 'JagGrok_Provider_Interface' ) ) {
         class_alias( 'AiMentor_Provider_Interface', 'JagGrok_Provider_Interface' );
