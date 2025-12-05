@@ -4,7 +4,7 @@ Tags: elementor, ai, grok, page builder, xai
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 2.1.0
+Stable tag: 2.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -113,6 +113,22 @@ Absolutely. Use the **Auto-Insert** toggle in the settings to decide if generate
 3. Generate content in middle canvas
 
 == Changelog ==
+= 2.2.0 =
+* **Automation Suite**: Complete automation system with pipelines, calendar, and integrations.
+* Added Content Pipeline system with 6 trigger types (schedule, manual, webhook, post publish, form submit, RSS).
+* Pipelines support 11 action types including content generation, translation, SEO, posting, and notifications.
+* Conditions and template variables enable dynamic, context-aware pipeline execution.
+* Introduced Content Calendar for scheduling and managing AI content generation.
+* Calendar supports 5 content types: blog posts, pages, social media, newsletters, and product descriptions.
+* Visual calendar with drag-and-drop rescheduling and bulk scheduling capabilities.
+* Added Zapier integration with webhook subscriptions and REST API endpoints.
+* 6 trigger events for Zapier: content generated, page generated, image generated, post created, pipeline completed, scheduled content ready.
+* 6 action endpoints for Zapier: generate content, generate image, translate, create post, run pipeline, schedule content.
+* Added Slack integration with rich notifications and customizable alerts.
+* Slack notifications for pipeline completion/failure, scheduled content status, and API errors.
+* Rich block-formatted Slack messages with action buttons and context.
+* Pipeline logging with execution history and error tracking.
+
 = 2.1.0 =
 * **AI Capabilities Expansion**: Major feature release with image generation, SEO integration, multi-language support, and tone profiles.
 * Added AI image generation support via DALL-E 3 and Stability AI (SDXL).
