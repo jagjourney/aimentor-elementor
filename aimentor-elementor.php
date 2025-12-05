@@ -4,7 +4,7 @@
  * Plugin URI: https://jagjourney.com/
  * Update URI: https://github.com/jagjourney/aimentor-elementor
  * Description: 🚀 FREE AI Page Builder - Generate full Elementor layouts with AiMentor. One prompt = complete pages!
- * Version: 1.8.3
+ * Version: 1.9.0
  * Author: AiMentor
  * Author URI: https://jagjourney.com/
  * License: GPL v2 or later
@@ -27,7 +27,7 @@ if ( ! defined( 'AIMENTOR_PLUGIN_VERSION' ) ) {
          * Updated for each tagged release so dependent systems can detect
          * available updates and WordPress can surface the correct metadata.
          */
-        define( 'AIMENTOR_PLUGIN_VERSION', '1.8.3' );
+        define( 'AIMENTOR_PLUGIN_VERSION', '1.9.0' );
 }
 
 if ( ! defined( 'AIMENTOR_PLUGIN_FILE' ) ) {
@@ -1092,6 +1092,13 @@ function aimentor_get_provider_meta_map() {
         return $meta;
 }
 
+// Schema validation and repair (Phase 1 foundation).
+require_once AIMENTOR_PLUGIN_DIR . 'includes/schema/class-elementor-schema-validator.php';
+require_once AIMENTOR_PLUGIN_DIR . 'includes/schema/class-elementor-json-repair.php';
+require_once AIMENTOR_PLUGIN_DIR . 'includes/schema/class-widget-definitions.php';
+require_once AIMENTOR_PLUGIN_DIR . 'includes/schema/class-elementor-prompt-builder.php';
+require_once AIMENTOR_PLUGIN_DIR . 'includes/schema/class-generation-pipeline.php';
+
 // Providers.
 require_once AIMENTOR_PLUGIN_DIR . 'includes/providers/class-aimentor-provider-interface.php';
 require_once AIMENTOR_PLUGIN_DIR . 'includes/providers/trait-aimentor-provider-variations.php';
@@ -1312,6 +1319,129 @@ if ( ! function_exists( 'aimentor_get_active_provider' ) ) {
         function aimentor_get_active_provider( $provider_key = null ) {
                 return jaggrok_get_active_provider( $provider_key );
         }
+}
+
+/**
+ * Get available fallback providers in priority order.
+ *
+ * @since 1.9.0
+ *
+ * @param string $primary_provider The primary provider that failed.
+ * @return array Fallback provider keys that are configured.
+ */
+function aimentor_get_fallback_providers( $primary_provider ) {
+        $all_providers = [ 'anthropic', 'openai', 'grok' ];
+        $fallbacks     = [];
+
+        foreach ( $all_providers as $provider ) {
+                if ( $provider === $primary_provider ) {
+                        continue;
+                }
+
+                if ( aimentor_is_provider_configured( $provider ) ) {
+                        $fallbacks[] = $provider;
+                }
+        }
+
+        return $fallbacks;
+}
+
+/**
+ * Check if a provider is configured with API key.
+ *
+ * @since 1.9.0
+ *
+ * @param string $provider Provider key.
+ * @return bool Whether the provider is configured.
+ */
+function aimentor_is_provider_configured( $provider ) {
+        $key_option = '';
+
+        switch ( $provider ) {
+                case 'grok':
+                        $key_option = 'aimentor_xai_api_key';
+                        break;
+                case 'openai':
+                        $key_option = 'aimentor_openai_api_key';
+                        break;
+                case 'anthropic':
+                        $key_option = 'aimentor_anthropic_api_key';
+                        break;
+        }
+
+        if ( '' === $key_option ) {
+                return false;
+        }
+
+        $key = get_option( $key_option, '' );
+        return ! empty( $key );
+}
+
+/**
+ * Execute generation with automatic fallback on failure.
+ *
+ * @since 1.9.0
+ *
+ * @param string $prompt        The generation prompt.
+ * @param array  $args          Generation arguments.
+ * @param string $provider_key  Primary provider to use.
+ * @return array|WP_Error Generation result or error.
+ */
+function aimentor_generate_with_fallback( $prompt, $args = [], $provider_key = null ) {
+        if ( null === $provider_key ) {
+                $provider_key = get_option( 'aimentor_provider', 'grok' );
+        }
+
+        // Try using the generation pipeline if available.
+        if ( class_exists( 'AiMentor_Generation_Pipeline' ) ) {
+                $pipeline = new AiMentor_Generation_Pipeline();
+                return $pipeline->generate( $prompt, $args, $provider_key );
+        }
+
+        // Fallback to direct provider call.
+        $provider = aimentor_get_active_provider( $provider_key );
+
+        if ( null === $provider ) {
+                return new WP_Error(
+                        'aimentor_invalid_provider',
+                        __( 'No valid provider configured.', 'aimentor' )
+                );
+        }
+
+        $result = $provider->request( $prompt, $args );
+
+        // If primary succeeds, return.
+        if ( ! is_wp_error( $result ) ) {
+                return $result;
+        }
+
+        // Don't retry on rate limits or auth errors.
+        $error_code = $result->get_error_code();
+        if ( in_array( $error_code, [ 'aimentor_rate_limited', 'aimentor_unauthorized', 'aimentor_missing_api_key' ], true ) ) {
+                return $result;
+        }
+
+        // Try fallback providers.
+        $fallbacks = aimentor_get_fallback_providers( $provider_key );
+
+        foreach ( $fallbacks as $fallback_key ) {
+                $fallback_provider = aimentor_get_active_provider( $fallback_key );
+
+                if ( null === $fallback_provider ) {
+                        continue;
+                }
+
+                $fallback_result = $fallback_provider->request( $prompt, $args );
+
+                if ( ! is_wp_error( $fallback_result ) ) {
+                        $fallback_result['fallback_used']     = $fallback_key;
+                        $fallback_result['original_provider'] = $provider_key;
+                        return $fallback_result;
+                }
+        }
+
+        // All providers failed.
+        return $result;
 }
 
 function jaggrok_normalize_generation_task( $task ) {

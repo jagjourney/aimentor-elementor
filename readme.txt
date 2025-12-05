@@ -4,7 +4,7 @@ Tags: elementor, ai, grok, page builder, xai
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.8.3
+Stable tag: 1.9.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -113,9 +113,16 @@ Absolutely. Use the **Auto-Insert** toggle in the settings to decide if generate
 3. Generate content in middle canvas
 
 == Changelog ==
-= 1.8.3 =
-* Verified compatibility with WordPress 6.9 and updated tested-up-to metadata.
-* Bumped Elementor and Elementor Pro tested-up-to versions to 3.27.
+= 1.9.0 =
+* **Foundation Release**: Major improvements to Elementor JSON generation reliability.
+* Added Elementor JSON schema validator for comprehensive structure validation.
+* Added automatic JSON repair system that fixes common AI generation errors.
+* Introduced enhanced prompt builder with detailed Elementor schema examples.
+* Implemented retry/repair pipeline - failed generations are automatically repaired and retried.
+* Added provider fallback system - automatically tries secondary providers when primary fails.
+* Created comprehensive widget definitions catalog covering 25+ widget types.
+* All providers (Grok, OpenAI, Anthropic) now use schema-aware system instructions.
+* Verified compatibility with WordPress 6.9 and Elementor 3.27.
 
 = 1.8.2 =
 * Enriched the Elementor modal payload so both the editor and settings scripts receive enabled quick-action metadata, prompt/system defaults, and lookup helpers.

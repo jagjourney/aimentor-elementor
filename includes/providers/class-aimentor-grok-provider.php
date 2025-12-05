@@ -357,8 +357,15 @@ class AiMentor_Grok_Provider implements AiMentor_Provider_Interface {
 
         $system_instruction = '';
 
-        if ( isset( $context['system'] ) ) {
+        if ( isset( $context['system'] ) && '' !== trim( $context['system'] ) ) {
             $system_instruction = sanitize_textarea_field( (string) $context['system'] );
+        } elseif ( 'canvas' === $task && class_exists( 'AiMentor_Elementor_Prompt_Builder' ) ) {
+            // Use enhanced prompt builder for canvas tasks.
+            $prompt_builder = new AiMentor_Elementor_Prompt_Builder();
+            $system_instruction = $prompt_builder->get_system_instruction( [
+                'brand'     => $brand,
+                'knowledge' => $knowledge,
+            ] );
         }
 
         return [

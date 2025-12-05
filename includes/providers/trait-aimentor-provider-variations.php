@@ -133,6 +133,8 @@ return $counts;
 /**
  * Normalize raw canvas JSON strings into structured variation payloads.
  *
+ * Uses the schema validator and repair system to ensure valid Elementor JSON.
+ *
  * @param array $raw_messages Raw message strings from the provider.
  * @param array $rate_limit   Rate limit payload for error context.
  *
@@ -140,6 +142,17 @@ return $counts;
  */
 protected function build_canvas_variations( array $raw_messages, $rate_limit = array() ) {
 $variations = array();
+$validator  = null;
+$repair     = null;
+
+// Initialize validator and repair if available.
+if ( class_exists( 'AiMentor_Elementor_Schema_Validator' ) ) {
+$validator = new AiMentor_Elementor_Schema_Validator();
+}
+
+if ( class_exists( 'AiMentor_Elementor_JSON_Repair' ) ) {
+$repair = new AiMentor_Elementor_JSON_Repair();
+}
 
 foreach ( $raw_messages as $index => $raw_message ) {
 $raw = trim( (string) $raw_message );
@@ -148,29 +161,77 @@ if ( '' === $raw ) {
 continue;
 }
 
+$decoded      = null;
+$repairs_made = array();
+
+// Step 1: Try direct JSON decode.
 $decoded = json_decode( $raw, true );
 
 if ( JSON_ERROR_NONE !== json_last_error() || ! is_array( $decoded ) ) {
+// Step 2: Try repair if available.
+if ( null !== $repair ) {
+$repair_result = $repair->repair( $raw );
+
+if ( $repair_result['success'] && is_array( $repair_result['data'] ) ) {
+$decoded      = $repair_result['data'];
+$repairs_made = $repair_result['repairs'];
+}
+}
+
+// Still invalid after repair attempt.
+if ( null === $decoded || ! is_array( $decoded ) ) {
 return new WP_Error(
 'aimentor_invalid_canvas',
-__( 'The response was not valid Elementor JSON.', 'aimentor' ),
+__( 'The response was not valid Elementor JSON and could not be repaired.', 'aimentor' ),
 array(
 'content'    => $raw,
 'rate_limit' => $rate_limit,
 )
 );
 }
+}
 
-$meta     = $this->analyze_canvas_layout_counts( $decoded );
-$label    = $this->get_variation_label( $index );
-$summary  = $this->describe_canvas_layout( $decoded );
+// Step 3: Validate structure if validator available.
+if ( null !== $validator ) {
+$validation = $validator->validate( $decoded );
+
+if ( ! $validation['valid'] && null !== $repair ) {
+// Try to repair validation errors.
+$repair_result = $repair->repair( $decoded );
+
+if ( $repair_result['success'] ) {
+$decoded = $repair_result['data'];
+$repairs_made = array_merge( $repairs_made, $repair_result['repairs'] );
+
+// Re-validate after repair.
+$validation = $validator->validate( $decoded );
+}
+}
+
+// Log warnings but don't fail on them.
+if ( ! empty( $validation['warnings'] ) ) {
+$this->log_canvas_warnings( $validation['warnings'], $index );
+}
+}
+
+// Normalize the output structure.
+$layout = $decoded;
+if ( isset( $decoded['elements'] ) ) {
+$layout = $decoded['elements'];
+}
+
+$meta    = $this->analyze_canvas_layout_counts( $decoded );
+$label   = $this->get_variation_label( $index );
+$summary = $this->describe_canvas_layout( $decoded );
+
 $variations[] = array(
 'id'      => 'canvas-' . ( $index + 1 ),
 'label'   => $label,
 'summary' => $summary,
-'layout'  => $decoded,
+'layout'  => $layout,
 'raw'     => $raw,
 'meta'    => $meta,
+'repairs' => $repairs_made,
 );
 }
 
@@ -185,6 +246,27 @@ array(
 }
 
 return $variations;
+}
+
+/**
+ * Log canvas validation warnings.
+ *
+ * @param array $warnings Validation warnings.
+ * @param int   $index    Variation index.
+ */
+protected function log_canvas_warnings( $warnings, $index ) {
+if ( empty( $warnings ) || ! function_exists( 'aimentor_log_error' ) ) {
+return;
+}
+
+foreach ( $warnings as $warning ) {
+aimentor_log_error( sprintf(
+'Canvas variation %d warning: %s (at %s)',
+$index + 1,
+$warning['message'],
+$warning['path'] ?? 'unknown'
+) );
+}
 }
 
 /**
