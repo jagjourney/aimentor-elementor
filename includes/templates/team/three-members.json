@@ -1,0 +1,235 @@
+{
+	"name": "Three Team Members",
+	"description": "Team showcase with photos, names, titles, and social links.",
+	"widgets_used": ["heading", "image-box", "social-icons"],
+	"elements": [
+		{
+			"id": "team3m01",
+			"elType": "section",
+			"settings": {
+				"structure": "10",
+				"padding": {
+					"unit": "px",
+					"top": "80",
+					"right": "20",
+					"bottom": "40",
+					"left": "20"
+				}
+			},
+			"elements": [
+				{
+					"id": "team3m02",
+					"elType": "column",
+					"settings": {
+						"_column_size": 100
+					},
+					"elements": [
+						{
+							"id": "team3m03",
+							"elType": "widget",
+							"widgetType": "heading",
+							"settings": {
+								"title": "Meet Our Team",
+								"header_size": "h2",
+								"align": "center",
+								"typography_font_size": {
+									"unit": "px",
+									"size": 36
+								}
+							}
+						},
+						{
+							"id": "team3m04",
+							"elType": "widget",
+							"widgetType": "text-editor",
+							"settings": {
+								"editor": "<p>The passionate people behind our success.</p>",
+								"align": "center",
+								"text_color": "#666666"
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "team3m05",
+			"elType": "section",
+			"settings": {
+				"structure": "30",
+				"padding": {
+					"unit": "px",
+					"top": "20",
+					"right": "20",
+					"bottom": "80",
+					"left": "20"
+				},
+				"gap": "extended"
+			},
+			"elements": [
+				{
+					"id": "team3m06",
+					"elType": "column",
+					"settings": {
+						"_column_size": 33
+					},
+					"elements": [
+						{
+							"id": "team3m07",
+							"elType": "widget",
+							"widgetType": "image-box",
+							"settings": {
+								"image": {
+									"url": "https://randomuser.me/api/portraits/men/75.jpg",
+									"id": ""
+								},
+								"title_text": "John Smith",
+								"description_text": "CEO & Founder",
+								"position": "top",
+								"image_size": "large"
+							}
+						},
+						{
+							"id": "team3m08",
+							"elType": "widget",
+							"widgetType": "social-icons",
+							"settings": {
+								"social_icon_list": [
+									{
+										"social_icon": {
+											"value": "fab fa-linkedin",
+											"library": "fa-brands"
+										},
+										"link": {
+											"url": "https://linkedin.com",
+											"is_external": true
+										}
+									},
+									{
+										"social_icon": {
+											"value": "fab fa-twitter",
+											"library": "fa-brands"
+										},
+										"link": {
+											"url": "https://twitter.com",
+											"is_external": true
+										}
+									}
+								],
+								"align": "center"
+							}
+						}
+					]
+				},
+				{
+					"id": "team3m09",
+					"elType": "column",
+					"settings": {
+						"_column_size": 33
+					},
+					"elements": [
+						{
+							"id": "team3m10",
+							"elType": "widget",
+							"widgetType": "image-box",
+							"settings": {
+								"image": {
+									"url": "https://randomuser.me/api/portraits/women/65.jpg",
+									"id": ""
+								},
+								"title_text": "Sarah Johnson",
+								"description_text": "CTO",
+								"position": "top",
+								"image_size": "large"
+							}
+						},
+						{
+							"id": "team3m11",
+							"elType": "widget",
+							"widgetType": "social-icons",
+							"settings": {
+								"social_icon_list": [
+									{
+										"social_icon": {
+											"value": "fab fa-linkedin",
+											"library": "fa-brands"
+										},
+										"link": {
+											"url": "https://linkedin.com",
+											"is_external": true
+										}
+									},
+									{
+										"social_icon": {
+											"value": "fab fa-github",
+											"library": "fa-brands"
+										},
+										"link": {
+											"url": "https://github.com",
+											"is_external": true
+										}
+									}
+								],
+								"align": "center"
+							}
+						}
+					]
+				},
+				{
+					"id": "team3m12",
+					"elType": "column",
+					"settings": {
+						"_column_size": 33
+					},
+					"elements": [
+						{
+							"id": "team3m13",
+							"elType": "widget",
+							"widgetType": "image-box",
+							"settings": {
+								"image": {
+									"url": "https://randomuser.me/api/portraits/men/32.jpg",
+									"id": ""
+								},
+								"title_text": "Michael Chen",
+								"description_text": "Head of Marketing",
+								"position": "top",
+								"image_size": "large"
+							}
+						},
+						{
+							"id": "team3m14",
+							"elType": "widget",
+							"widgetType": "social-icons",
+							"settings": {
+								"social_icon_list": [
+									{
+										"social_icon": {
+											"value": "fab fa-linkedin",
+											"library": "fa-brands"
+										},
+										"link": {
+											"url": "https://linkedin.com",
+											"is_external": true
+										}
+									},
+									{
+										"social_icon": {
+											"value": "fab fa-instagram",
+											"library": "fa-brands"
+										},
+										"link": {
+											"url": "https://instagram.com",
+											"is_external": true
+										}
+									}
+								],
+								"align": "center"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

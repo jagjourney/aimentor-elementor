@@ -1,0 +1,75 @@
+{
+	"name": "Simple CTA Banner",
+	"description": "Clean call-to-action with headline and button.",
+	"widgets_used": ["heading", "text-editor", "button"],
+	"elements": [
+		{
+			"id": "cta0001",
+			"elType": "section",
+			"settings": {
+				"structure": "10",
+				"padding": {
+					"unit": "px",
+					"top": "80",
+					"right": "40",
+					"bottom": "80",
+					"left": "40"
+				},
+				"background_color": "#4a90d9"
+			},
+			"elements": [
+				{
+					"id": "cta0002",
+					"elType": "column",
+					"settings": {
+						"_column_size": 100
+					},
+					"elements": [
+						{
+							"id": "cta0003",
+							"elType": "widget",
+							"widgetType": "heading",
+							"settings": {
+								"title": "Ready to Get Started?",
+								"header_size": "h2",
+								"align": "center",
+								"title_color": "#ffffff",
+								"typography_font_size": {
+									"unit": "px",
+									"size": 36
+								}
+							}
+						},
+						{
+							"id": "cta0004",
+							"elType": "widget",
+							"widgetType": "text-editor",
+							"settings": {
+								"editor": "<p>Join thousands of happy customers who are already growing their business with us.</p>",
+								"align": "center",
+								"text_color": "rgba(255,255,255,0.9)"
+							}
+						},
+						{
+							"id": "cta0005",
+							"elType": "widget",
+							"widgetType": "button",
+							"settings": {
+								"text": "Start Your Free Trial",
+								"align": "center",
+								"size": "lg",
+								"background_color": "#ffffff",
+								"button_text_color": "#4a90d9",
+								"link": {
+									"url": "#signup",
+									"is_external": false,
+									"nofollow": false
+								}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

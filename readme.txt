@@ -4,7 +4,7 @@ Tags: elementor, ai, grok, page builder, xai
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.9.0
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -113,6 +113,16 @@ Absolutely. Use the **Auto-Insert** toggle in the settings to decide if generate
 3. Generate content in middle canvas
 
 == Changelog ==
+= 2.0.0 =
+* **Section Templates & Page Wizard**: Major expansion with pre-built section templates and guided page generation.
+* Added 12 professionally designed section templates (hero, features, testimonials, pricing, CTA, FAQ, stats, contact, team).
+* Introduced Page Wizard system supporting 8 page types (landing, about, services, pricing, contact, portfolio, blog, coming soon).
+* Enhanced prompt builder now includes real JSON template examples for improved AI generation accuracy.
+* Template-aware prompts automatically reference matching templates for each section type.
+* Page generation mode ensures consistent styling across multi-section pages.
+* Added template categories for organized browsing: hero, features, testimonials, pricing, cta, faq, stats, contact, team.
+* Each template includes widget definitions, recommended settings, and complete Elementor JSON structure.
+
 = 1.9.0 =
 * **Foundation Release**: Major improvements to Elementor JSON generation reliability.
 * Added Elementor JSON schema validator for comprehensive structure validation.

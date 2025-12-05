@@ -1,0 +1,428 @@
+{
+	"name": "Three Tier Pricing",
+	"description": "Three pricing plans with features list and CTAs.",
+	"widgets_used": ["heading", "text-editor", "icon-list", "button", "divider"],
+	"elements": [
+		{
+			"id": "price301",
+			"elType": "section",
+			"settings": {
+				"structure": "10",
+				"padding": {
+					"unit": "px",
+					"top": "80",
+					"right": "20",
+					"bottom": "40",
+					"left": "20"
+				}
+			},
+			"elements": [
+				{
+					"id": "price302",
+					"elType": "column",
+					"settings": {
+						"_column_size": 100
+					},
+					"elements": [
+						{
+							"id": "price303",
+							"elType": "widget",
+							"widgetType": "heading",
+							"settings": {
+								"title": "Simple, Transparent Pricing",
+								"header_size": "h2",
+								"align": "center",
+								"typography_font_size": {
+									"unit": "px",
+									"size": 36
+								}
+							}
+						},
+						{
+							"id": "price304",
+							"elType": "widget",
+							"widgetType": "text-editor",
+							"settings": {
+								"editor": "<p>Choose the plan that works best for you. All plans include a 14-day free trial.</p>",
+								"align": "center",
+								"text_color": "#666666"
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "price305",
+			"elType": "section",
+			"settings": {
+				"structure": "30",
+				"padding": {
+					"unit": "px",
+					"top": "20",
+					"right": "20",
+					"bottom": "80",
+					"left": "20"
+				},
+				"gap": "extended"
+			},
+			"elements": [
+				{
+					"id": "price306",
+					"elType": "column",
+					"settings": {
+						"_column_size": 33,
+						"background_color": "#ffffff",
+						"padding": {
+							"unit": "px",
+							"top": "40",
+							"right": "30",
+							"bottom": "40",
+							"left": "30"
+						},
+						"border_border": "solid",
+						"border_width": {
+							"unit": "px",
+							"top": "1",
+							"right": "1",
+							"bottom": "1",
+							"left": "1"
+						},
+						"border_color": "#e0e0e0",
+						"border_radius": {
+							"unit": "px",
+							"size": 10
+						}
+					},
+					"elements": [
+						{
+							"id": "price307",
+							"elType": "widget",
+							"widgetType": "heading",
+							"settings": {
+								"title": "Starter",
+								"header_size": "h3",
+								"align": "center"
+							}
+						},
+						{
+							"id": "price308",
+							"elType": "widget",
+							"widgetType": "heading",
+							"settings": {
+								"title": "$19/mo",
+								"header_size": "h2",
+								"align": "center",
+								"typography_font_size": {
+									"unit": "px",
+									"size": 48
+								}
+							}
+						},
+						{
+							"id": "price309",
+							"elType": "widget",
+							"widgetType": "divider",
+							"settings": {
+								"style": "solid"
+							}
+						},
+						{
+							"id": "price310",
+							"elType": "widget",
+							"widgetType": "icon-list",
+							"settings": {
+								"icon_list": [
+									{
+										"text": "5 Projects",
+										"selected_icon": {
+											"value": "fas fa-check",
+											"library": "fa-solid"
+										}
+									},
+									{
+										"text": "10GB Storage",
+										"selected_icon": {
+											"value": "fas fa-check",
+											"library": "fa-solid"
+										}
+									},
+									{
+										"text": "Basic Support",
+										"selected_icon": {
+											"value": "fas fa-check",
+											"library": "fa-solid"
+										}
+									},
+									{
+										"text": "API Access",
+										"selected_icon": {
+											"value": "fas fa-check",
+											"library": "fa-solid"
+										}
+									}
+								]
+							}
+						},
+						{
+							"id": "price311",
+							"elType": "widget",
+							"widgetType": "button",
+							"settings": {
+								"text": "Get Started",
+								"align": "stretch",
+								"size": "md",
+								"link": {
+									"url": "#",
+									"is_external": false,
+									"nofollow": false
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": "price312",
+					"elType": "column",
+					"settings": {
+						"_column_size": 33,
+						"background_color": "#4a90d9",
+						"padding": {
+							"unit": "px",
+							"top": "40",
+							"right": "30",
+							"bottom": "40",
+							"left": "30"
+						},
+						"border_radius": {
+							"unit": "px",
+							"size": 10
+						}
+					},
+					"elements": [
+						{
+							"id": "price313",
+							"elType": "widget",
+							"widgetType": "heading",
+							"settings": {
+								"title": "Professional",
+								"header_size": "h3",
+								"align": "center",
+								"title_color": "#ffffff"
+							}
+						},
+						{
+							"id": "price314",
+							"elType": "widget",
+							"widgetType": "heading",
+							"settings": {
+								"title": "$49/mo",
+								"header_size": "h2",
+								"align": "center",
+								"title_color": "#ffffff",
+								"typography_font_size": {
+									"unit": "px",
+									"size": 48
+								}
+							}
+						},
+						{
+							"id": "price315",
+							"elType": "widget",
+							"widgetType": "divider",
+							"settings": {
+								"style": "solid",
+								"color": "rgba(255,255,255,0.3)"
+							}
+						},
+						{
+							"id": "price316",
+							"elType": "widget",
+							"widgetType": "icon-list",
+							"settings": {
+								"icon_list": [
+									{
+										"text": "Unlimited Projects",
+										"selected_icon": {
+											"value": "fas fa-check",
+											"library": "fa-solid"
+										}
+									},
+									{
+										"text": "100GB Storage",
+										"selected_icon": {
+											"value": "fas fa-check",
+											"library": "fa-solid"
+										}
+									},
+									{
+										"text": "Priority Support",
+										"selected_icon": {
+											"value": "fas fa-check",
+											"library": "fa-solid"
+										}
+									},
+									{
+										"text": "Advanced Analytics",
+										"selected_icon": {
+											"value": "fas fa-check",
+											"library": "fa-solid"
+										}
+									},
+									{
+										"text": "Custom Integrations",
+										"selected_icon": {
+											"value": "fas fa-check",
+											"library": "fa-solid"
+										}
+									}
+								],
+								"icon_color": "#ffffff",
+								"text_color": "#ffffff"
+							}
+						},
+						{
+							"id": "price317",
+							"elType": "widget",
+							"widgetType": "button",
+							"settings": {
+								"text": "Start Free Trial",
+								"align": "stretch",
+								"size": "md",
+								"button_type": "default",
+								"background_color": "#ffffff",
+								"button_text_color": "#4a90d9",
+								"link": {
+									"url": "#",
+									"is_external": false,
+									"nofollow": false
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": "price318",
+					"elType": "column",
+					"settings": {
+						"_column_size": 33,
+						"background_color": "#ffffff",
+						"padding": {
+							"unit": "px",
+							"top": "40",
+							"right": "30",
+							"bottom": "40",
+							"left": "30"
+						},
+						"border_border": "solid",
+						"border_width": {
+							"unit": "px",
+							"top": "1",
+							"right": "1",
+							"bottom": "1",
+							"left": "1"
+						},
+						"border_color": "#e0e0e0",
+						"border_radius": {
+							"unit": "px",
+							"size": 10
+						}
+					},
+					"elements": [
+						{
+							"id": "price319",
+							"elType": "widget",
+							"widgetType": "heading",
+							"settings": {
+								"title": "Enterprise",
+								"header_size": "h3",
+								"align": "center"
+							}
+						},
+						{
+							"id": "price320",
+							"elType": "widget",
+							"widgetType": "heading",
+							"settings": {
+								"title": "$99/mo",
+								"header_size": "h2",
+								"align": "center",
+								"typography_font_size": {
+									"unit": "px",
+									"size": 48
+								}
+							}
+						},
+						{
+							"id": "price321",
+							"elType": "widget",
+							"widgetType": "divider",
+							"settings": {
+								"style": "solid"
+							}
+						},
+						{
+							"id": "price322",
+							"elType": "widget",
+							"widgetType": "icon-list",
+							"settings": {
+								"icon_list": [
+									{
+										"text": "Everything in Pro",
+										"selected_icon": {
+											"value": "fas fa-check",
+											"library": "fa-solid"
+										}
+									},
+									{
+										"text": "Unlimited Storage",
+										"selected_icon": {
+											"value": "fas fa-check",
+											"library": "fa-solid"
+										}
+									},
+									{
+										"text": "Dedicated Support",
+										"selected_icon": {
+											"value": "fas fa-check",
+											"library": "fa-solid"
+										}
+									},
+									{
+										"text": "SLA Guarantee",
+										"selected_icon": {
+											"value": "fas fa-check",
+											"library": "fa-solid"
+										}
+									},
+									{
+										"text": "Custom Branding",
+										"selected_icon": {
+											"value": "fas fa-check",
+											"library": "fa-solid"
+										}
+									}
+								]
+							}
+						},
+						{
+							"id": "price323",
+							"elType": "widget",
+							"widgetType": "button",
+							"settings": {
+								"text": "Contact Sales",
+								"align": "stretch",
+								"size": "md",
+								"link": {
+									"url": "#contact",
+									"is_external": false,
+									"nofollow": false
+								}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

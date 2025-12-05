@@ -1,0 +1,146 @@
+{
+	"name": "Three Column Icon Features",
+	"description": "Three feature boxes with icons, titles, and descriptions.",
+	"widgets_used": ["heading", "icon-box"],
+	"elements": [
+		{
+			"id": "feat3c01",
+			"elType": "section",
+			"settings": {
+				"structure": "10",
+				"padding": {
+					"unit": "px",
+					"top": "80",
+					"right": "20",
+					"bottom": "80",
+					"left": "20"
+				}
+			},
+			"elements": [
+				{
+					"id": "feat3c02",
+					"elType": "column",
+					"settings": {
+						"_column_size": 100
+					},
+					"elements": [
+						{
+							"id": "feat3c03",
+							"elType": "widget",
+							"widgetType": "heading",
+							"settings": {
+								"title": "Why Choose Us",
+								"header_size": "h2",
+								"align": "center",
+								"typography_font_size": {
+									"unit": "px",
+									"size": 36
+								},
+								"typography_font_weight": "700"
+							}
+						},
+						{
+							"id": "feat3c04",
+							"elType": "widget",
+							"widgetType": "text-editor",
+							"settings": {
+								"editor": "<p>Discover the key benefits that set us apart from the competition.</p>",
+								"align": "center",
+								"text_color": "#666666"
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "feat3c05",
+			"elType": "section",
+			"settings": {
+				"structure": "30",
+				"padding": {
+					"unit": "px",
+					"top": "20",
+					"right": "20",
+					"bottom": "80",
+					"left": "20"
+				},
+				"gap": "extended"
+			},
+			"elements": [
+				{
+					"id": "feat3c06",
+					"elType": "column",
+					"settings": {
+						"_column_size": 33
+					},
+					"elements": [
+						{
+							"id": "feat3c07",
+							"elType": "widget",
+							"widgetType": "icon-box",
+							"settings": {
+								"selected_icon": {
+									"value": "fas fa-rocket",
+									"library": "fa-solid"
+								},
+								"title_text": "Lightning Fast",
+								"description_text": "Experience blazing fast performance that keeps your business running smoothly around the clock.",
+								"position": "top",
+								"title_size": "h3"
+							}
+						}
+					]
+				},
+				{
+					"id": "feat3c08",
+					"elType": "column",
+					"settings": {
+						"_column_size": 33
+					},
+					"elements": [
+						{
+							"id": "feat3c09",
+							"elType": "widget",
+							"widgetType": "icon-box",
+							"settings": {
+								"selected_icon": {
+									"value": "fas fa-shield-alt",
+									"library": "fa-solid"
+								},
+								"title_text": "Secure & Reliable",
+								"description_text": "Your data is protected with enterprise-grade security and 99.9% uptime guarantee.",
+								"position": "top",
+								"title_size": "h3"
+							}
+						}
+					]
+				},
+				{
+					"id": "feat3c10",
+					"elType": "column",
+					"settings": {
+						"_column_size": 33
+					},
+					"elements": [
+						{
+							"id": "feat3c11",
+							"elType": "widget",
+							"widgetType": "icon-box",
+							"settings": {
+								"selected_icon": {
+									"value": "fas fa-headset",
+									"library": "fa-solid"
+								},
+								"title_text": "24/7 Support",
+								"description_text": "Our dedicated support team is always ready to help you succeed with expert assistance.",
+								"position": "top",
+								"title_size": "h3"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

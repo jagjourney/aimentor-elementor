@@ -1,0 +1,153 @@
+{
+	"name": "Four Stat Counters",
+	"description": "Four animated counters displaying key metrics.",
+	"widgets_used": ["heading", "counter"],
+	"elements": [
+		{
+			"id": "stat4c01",
+			"elType": "section",
+			"settings": {
+				"structure": "10",
+				"padding": {
+					"unit": "px",
+					"top": "80",
+					"right": "20",
+					"bottom": "40",
+					"left": "20"
+				},
+				"background_color": "#1a1a2e"
+			},
+			"elements": [
+				{
+					"id": "stat4c02",
+					"elType": "column",
+					"settings": {
+						"_column_size": 100
+					},
+					"elements": [
+						{
+							"id": "stat4c03",
+							"elType": "widget",
+							"widgetType": "heading",
+							"settings": {
+								"title": "Our Impact in Numbers",
+								"header_size": "h2",
+								"align": "center",
+								"title_color": "#ffffff",
+								"typography_font_size": {
+									"unit": "px",
+									"size": 36
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "stat4c04",
+			"elType": "section",
+			"settings": {
+				"structure": "40",
+				"padding": {
+					"unit": "px",
+					"top": "20",
+					"right": "20",
+					"bottom": "80",
+					"left": "20"
+				},
+				"background_color": "#1a1a2e"
+			},
+			"elements": [
+				{
+					"id": "stat4c05",
+					"elType": "column",
+					"settings": {
+						"_column_size": 25
+					},
+					"elements": [
+						{
+							"id": "stat4c06",
+							"elType": "widget",
+							"widgetType": "counter",
+							"settings": {
+								"starting_number": 0,
+								"ending_number": 10000,
+								"suffix": "+",
+								"title": "Happy Customers",
+								"number_color": "#4a90d9",
+								"title_color": "#ffffff"
+							}
+						}
+					]
+				},
+				{
+					"id": "stat4c07",
+					"elType": "column",
+					"settings": {
+						"_column_size": 25
+					},
+					"elements": [
+						{
+							"id": "stat4c08",
+							"elType": "widget",
+							"widgetType": "counter",
+							"settings": {
+								"starting_number": 0,
+								"ending_number": 98,
+								"suffix": "%",
+								"title": "Satisfaction Rate",
+								"number_color": "#4a90d9",
+								"title_color": "#ffffff"
+							}
+						}
+					]
+				},
+				{
+					"id": "stat4c09",
+					"elType": "column",
+					"settings": {
+						"_column_size": 25
+					},
+					"elements": [
+						{
+							"id": "stat4c10",
+							"elType": "widget",
+							"widgetType": "counter",
+							"settings": {
+								"starting_number": 0,
+								"ending_number": 50,
+								"suffix": "M+",
+								"title": "Tasks Completed",
+								"number_color": "#4a90d9",
+								"title_color": "#ffffff"
+							}
+						}
+					]
+				},
+				{
+					"id": "stat4c11",
+					"elType": "column",
+					"settings": {
+						"_column_size": 25
+					},
+					"elements": [
+						{
+							"id": "stat4c12",
+							"elType": "widget",
+							"widgetType": "counter",
+							"settings": {
+								"starting_number": 0,
+								"ending_number": 24,
+								"suffix": "/7",
+								"title": "Support Available",
+								"number_color": "#4a90d9",
+								"title_color": "#ffffff"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

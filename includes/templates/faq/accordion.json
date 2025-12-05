@@ -1,0 +1,157 @@
+{
+	"name": "FAQ Accordion",
+	"description": "Frequently asked questions with expandable accordion.",
+	"widgets_used": ["heading", "text-editor", "accordion"],
+	"elements": [
+		{
+			"id": "faq00001",
+			"elType": "section",
+			"settings": {
+				"structure": "10",
+				"padding": {
+					"unit": "px",
+					"top": "80",
+					"right": "20",
+					"bottom": "80",
+					"left": "20"
+				}
+			},
+			"elements": [
+				{
+					"id": "faq00002",
+					"elType": "column",
+					"settings": {
+						"_column_size": 100
+					},
+					"elements": [
+						{
+							"id": "faq00003",
+							"elType": "widget",
+							"widgetType": "heading",
+							"settings": {
+								"title": "Frequently Asked Questions",
+								"header_size": "h2",
+								"align": "center",
+								"typography_font_size": {
+									"unit": "px",
+									"size": 36
+								}
+							}
+						},
+						{
+							"id": "faq00004",
+							"elType": "widget",
+							"widgetType": "text-editor",
+							"settings": {
+								"editor": "<p>Find answers to common questions about our product and services.</p>",
+								"align": "center",
+								"text_color": "#666666"
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "faq00005",
+			"elType": "section",
+			"settings": {
+				"structure": "21",
+				"padding": {
+					"unit": "px",
+					"top": "20",
+					"right": "20",
+					"bottom": "80",
+					"left": "20"
+				}
+			},
+			"elements": [
+				{
+					"id": "faq00006",
+					"elType": "column",
+					"settings": {
+						"_column_size": 66
+					},
+					"elements": [
+						{
+							"id": "faq00007",
+							"elType": "widget",
+							"widgetType": "accordion",
+							"settings": {
+								"tabs": [
+									{
+										"tab_title": "How do I get started?",
+										"tab_content": "Getting started is easy! Simply sign up for a free account, complete the quick onboarding process, and you'll be ready to go in under 5 minutes. Our setup wizard will guide you through each step."
+									},
+									{
+										"tab_title": "What payment methods do you accept?",
+										"tab_content": "We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and bank transfers for annual plans. All payments are processed securely through our payment partners."
+									},
+									{
+										"tab_title": "Can I cancel my subscription anytime?",
+										"tab_content": "Yes, you can cancel your subscription at any time from your account settings. There are no cancellation fees, and you'll continue to have access until the end of your billing period."
+									},
+									{
+										"tab_title": "Do you offer refunds?",
+										"tab_content": "We offer a 30-day money-back guarantee on all plans. If you're not satisfied within the first 30 days, contact our support team for a full refund, no questions asked."
+									},
+									{
+										"tab_title": "Is my data secure?",
+										"tab_content": "Absolutely. We use industry-standard encryption (AES-256) for all data at rest and in transit. Our infrastructure is hosted on secure cloud servers with SOC 2 Type II compliance."
+									},
+									{
+										"tab_title": "How can I contact support?",
+										"tab_content": "Our support team is available 24/7 via live chat, email at support@example.com, or phone. Pro and Enterprise customers also get access to priority support with faster response times."
+									}
+								]
+							}
+						}
+					]
+				},
+				{
+					"id": "faq00008",
+					"elType": "column",
+					"settings": {
+						"_column_size": 33
+					},
+					"elements": [
+						{
+							"id": "faq00009",
+							"elType": "widget",
+							"widgetType": "heading",
+							"settings": {
+								"title": "Still have questions?",
+								"header_size": "h4",
+								"align": "left"
+							}
+						},
+						{
+							"id": "faq00010",
+							"elType": "widget",
+							"widgetType": "text-editor",
+							"settings": {
+								"editor": "<p>Can't find what you're looking for? Our support team is here to help.</p>",
+								"text_color": "#666666"
+							}
+						},
+						{
+							"id": "faq00011",
+							"elType": "widget",
+							"widgetType": "button",
+							"settings": {
+								"text": "Contact Support",
+								"align": "left",
+								"size": "md",
+								"link": {
+									"url": "#contact",
+									"is_external": false,
+									"nofollow": false
+								}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

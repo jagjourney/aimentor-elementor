@@ -1,0 +1,155 @@
+{
+	"name": "Four Column Feature Grid",
+	"description": "Four feature boxes in a clean grid layout.",
+	"widgets_used": ["heading", "icon-box"],
+	"elements": [
+		{
+			"id": "feat4g01",
+			"elType": "section",
+			"settings": {
+				"structure": "10",
+				"padding": {
+					"unit": "px",
+					"top": "80",
+					"right": "20",
+					"bottom": "40",
+					"left": "20"
+				}
+			},
+			"elements": [
+				{
+					"id": "feat4g02",
+					"elType": "column",
+					"settings": {
+						"_column_size": 100
+					},
+					"elements": [
+						{
+							"id": "feat4g03",
+							"elType": "widget",
+							"widgetType": "heading",
+							"settings": {
+								"title": "Powerful Features",
+								"header_size": "h2",
+								"align": "center",
+								"typography_font_size": {
+									"unit": "px",
+									"size": 36
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "feat4g04",
+			"elType": "section",
+			"settings": {
+				"structure": "40",
+				"padding": {
+					"unit": "px",
+					"top": "20",
+					"right": "20",
+					"bottom": "80",
+					"left": "20"
+				},
+				"gap": "default"
+			},
+			"elements": [
+				{
+					"id": "feat4g05",
+					"elType": "column",
+					"settings": {
+						"_column_size": 25
+					},
+					"elements": [
+						{
+							"id": "feat4g06",
+							"elType": "widget",
+							"widgetType": "icon-box",
+							"settings": {
+								"selected_icon": {
+									"value": "fas fa-bolt",
+									"library": "fa-solid"
+								},
+								"title_text": "Fast Setup",
+								"description_text": "Get started in minutes with our intuitive setup process.",
+								"position": "top"
+							}
+						}
+					]
+				},
+				{
+					"id": "feat4g07",
+					"elType": "column",
+					"settings": {
+						"_column_size": 25
+					},
+					"elements": [
+						{
+							"id": "feat4g08",
+							"elType": "widget",
+							"widgetType": "icon-box",
+							"settings": {
+								"selected_icon": {
+									"value": "fas fa-sync",
+									"library": "fa-solid"
+								},
+								"title_text": "Auto Sync",
+								"description_text": "Keep everything in sync automatically across all devices.",
+								"position": "top"
+							}
+						}
+					]
+				},
+				{
+					"id": "feat4g09",
+					"elType": "column",
+					"settings": {
+						"_column_size": 25
+					},
+					"elements": [
+						{
+							"id": "feat4g10",
+							"elType": "widget",
+							"widgetType": "icon-box",
+							"settings": {
+								"selected_icon": {
+									"value": "fas fa-chart-line",
+									"library": "fa-solid"
+								},
+								"title_text": "Analytics",
+								"description_text": "Powerful insights to help you make data-driven decisions.",
+								"position": "top"
+							}
+						}
+					]
+				},
+				{
+					"id": "feat4g11",
+					"elType": "column",
+					"settings": {
+						"_column_size": 25
+					},
+					"elements": [
+						{
+							"id": "feat4g12",
+							"elType": "widget",
+							"widgetType": "icon-box",
+							"settings": {
+								"selected_icon": {
+									"value": "fas fa-lock",
+									"library": "fa-solid"
+								},
+								"title_text": "Secure",
+								"description_text": "Bank-level security to protect your sensitive data.",
+								"position": "top"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,158 @@
+{
+	"name": "Contact Info with Map",
+	"description": "Contact information section with Google Maps embed.",
+	"widgets_used": ["heading", "icon-list", "button", "google_maps"],
+	"elements": [
+		{
+			"id": "cont0001",
+			"elType": "section",
+			"settings": {
+				"structure": "10",
+				"padding": {
+					"unit": "px",
+					"top": "80",
+					"right": "20",
+					"bottom": "40",
+					"left": "20"
+				}
+			},
+			"elements": [
+				{
+					"id": "cont0002",
+					"elType": "column",
+					"settings": {
+						"_column_size": 100
+					},
+					"elements": [
+						{
+							"id": "cont0003",
+							"elType": "widget",
+							"widgetType": "heading",
+							"settings": {
+								"title": "Get In Touch",
+								"header_size": "h2",
+								"align": "center",
+								"typography_font_size": {
+									"unit": "px",
+									"size": 36
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "cont0004",
+			"elType": "section",
+			"settings": {
+				"structure": "20",
+				"padding": {
+					"unit": "px",
+					"top": "20",
+					"right": "20",
+					"bottom": "80",
+					"left": "20"
+				},
+				"gap": "extended"
+			},
+			"elements": [
+				{
+					"id": "cont0005",
+					"elType": "column",
+					"settings": {
+						"_column_size": 50
+					},
+					"elements": [
+						{
+							"id": "cont0006",
+							"elType": "widget",
+							"widgetType": "heading",
+							"settings": {
+								"title": "Contact Information",
+								"header_size": "h4",
+								"align": "left"
+							}
+						},
+						{
+							"id": "cont0007",
+							"elType": "widget",
+							"widgetType": "icon-list",
+							"settings": {
+								"icon_list": [
+									{
+										"text": "123 Business Street, Suite 100, New York, NY 10001",
+										"selected_icon": {
+											"value": "fas fa-map-marker-alt",
+											"library": "fa-solid"
+										}
+									},
+									{
+										"text": "(555) 123-4567",
+										"selected_icon": {
+											"value": "fas fa-phone",
+											"library": "fa-solid"
+										}
+									},
+									{
+										"text": "hello@example.com",
+										"selected_icon": {
+											"value": "fas fa-envelope",
+											"library": "fa-solid"
+										}
+									},
+									{
+										"text": "Mon - Fri: 9:00 AM - 6:00 PM",
+										"selected_icon": {
+											"value": "fas fa-clock",
+											"library": "fa-solid"
+										}
+									}
+								]
+							}
+						},
+						{
+							"id": "cont0008",
+							"elType": "widget",
+							"widgetType": "button",
+							"settings": {
+								"text": "Send Message",
+								"align": "left",
+								"size": "md",
+								"link": {
+									"url": "#contact-form",
+									"is_external": false,
+									"nofollow": false
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": "cont0009",
+					"elType": "column",
+					"settings": {
+						"_column_size": 50
+					},
+					"elements": [
+						{
+							"id": "cont0010",
+							"elType": "widget",
+							"widgetType": "google_maps",
+							"settings": {
+								"address": "123 Business Street, New York, NY 10001",
+								"zoom": {
+									"size": 14
+								},
+								"height": {
+									"size": 300,
+									"unit": "px"
+								}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

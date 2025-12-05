@@ -15,6 +15,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 class AiMentor_Elementor_Prompt_Builder {
 
 	/**
+	 * Section templates loader instance.
+	 *
+	 * @var AiMentor_Section_Templates|null
+	 */
+	protected $templates_loader = null;
+
+	/**
+	 * Get the section templates loader.
+	 *
+	 * @return AiMentor_Section_Templates|null
+	 */
+	protected function get_templates_loader() {
+		if ( null === $this->templates_loader && class_exists( 'AiMentor_Section_Templates' ) ) {
+			$this->templates_loader = new AiMentor_Section_Templates();
+		}
+		return $this->templates_loader;
+	}
+
+	/**
 	 * Build a complete canvas generation prompt.
 	 *
 	 * @param string $user_prompt The user's original prompt.
@@ -336,6 +355,12 @@ class AiMentor_Elementor_Prompt_Builder {
 		$template = $section_templates[ $section_type ];
 		$system   = $this->get_system_instruction( $context );
 
+		// Add section-specific template example if available
+		$template_example = $this->get_template_example_for_section( $section_type );
+		if ( ! empty( $template_example ) ) {
+			$system .= $template_example;
+		}
+
 		$prompt = sprintf( "Generate a %s section with the following characteristics:\n\n", $template['label'] );
 		$prompt .= $template['description'] . "\n\n";
 
@@ -353,6 +378,63 @@ class AiMentor_Elementor_Prompt_Builder {
 			'system' => $system,
 			'prompt' => $prompt,
 		];
+	}
+
+	/**
+	 * Get a template example for a specific section type.
+	 *
+	 * @param string $section_type The section type.
+	 * @return string Template example documentation or empty string.
+	 */
+	protected function get_template_example_for_section( $section_type ) {
+		$loader = $this->get_templates_loader();
+		if ( ! $loader ) {
+			return '';
+		}
+
+		// Map section types to template categories
+		$category_map = [
+			'hero'         => 'hero',
+			'features'     => 'features',
+			'testimonials' => 'testimonials',
+			'pricing'      => 'pricing',
+			'cta'          => 'cta',
+			'faq'          => 'faq',
+			'team'         => 'team',
+			'stats'        => 'stats',
+			'contact'      => 'contact',
+			'gallery'      => 'gallery',
+			'services'     => 'services',
+			'about'        => 'about',
+		];
+
+		if ( ! isset( $category_map[ $section_type ] ) ) {
+			return '';
+		}
+
+		$category  = $category_map[ $section_type ];
+		$templates = $loader->get_templates_by_category( $category );
+
+		if ( empty( $templates ) ) {
+			return '';
+		}
+
+		// Get the first template as an example
+		$first_template = reset( $templates );
+		$template_data  = $loader->load_template( $first_template['file'] );
+
+		if ( ! $template_data || empty( $template_data['elements'] ) ) {
+			return '';
+		}
+
+		$example = "\n## REFERENCE EXAMPLE: " . strtoupper( $section_type ) . " SECTION\n\n";
+		$example .= "Here is a well-structured example of a {$section_type} section. Use this as a reference for structure and formatting:\n\n";
+		$example .= "```json\n";
+		$example .= wp_json_encode( [ 'elements' => $template_data['elements'] ], JSON_PRETTY_PRINT );
+		$example .= "\n```\n\n";
+		$example .= "Note: Generate your own unique content and IDs, but follow this structural pattern.\n\n";
+
+		return $example;
 	}
 
 	/**
@@ -439,5 +521,102 @@ class AiMentor_Elementor_Prompt_Builder {
 		}
 
 		return $types;
+	}
+
+	/**
+	 * Build a page wizard prompt for complete page generation.
+	 *
+	 * @param string $page_type The type of page to generate.
+	 * @param array  $answers   User answers to wizard questions.
+	 * @param array  $context   Additional context (brand, knowledge).
+	 * @return array Prompt components.
+	 */
+	public function build_page_wizard_prompt( $page_type, $answers = [], $context = [] ) {
+		if ( ! class_exists( 'AiMentor_Page_Wizard' ) ) {
+			// Fallback to basic prompt
+			return $this->build_canvas_prompt(
+				"Generate a complete {$page_type} page layout",
+				$context
+			);
+		}
+
+		$wizard = new AiMentor_Page_Wizard();
+		$system = $this->get_system_instruction( $context );
+
+		// Add page-specific guidance
+		$system .= "\n## PAGE GENERATION MODE\n\n";
+		$system .= "You are generating a complete, multi-section page. Create a cohesive design with:\n";
+		$system .= "- Consistent styling across all sections\n";
+		$system .= "- Logical content flow from top to bottom\n";
+		$system .= "- Appropriate spacing and visual hierarchy\n";
+		$system .= "- Professional, realistic content (not Lorem ipsum)\n\n";
+
+		// Add template examples for relevant sections
+		$page_types = $wizard->get_page_types();
+		if ( isset( $page_types[ $page_type ]['sections'] ) ) {
+			$sections = $page_types[ $page_type ]['sections'];
+			$examples_added = 0;
+
+			foreach ( $sections as $section_type ) {
+				if ( $examples_added >= 2 ) {
+					// Limit examples to avoid prompt bloat
+					break;
+				}
+				$example = $this->get_template_example_for_section( $section_type );
+				if ( ! empty( $example ) ) {
+					$system .= $example;
+					$examples_added++;
+				}
+			}
+		}
+
+		// Build the user prompt using the wizard
+		$prompt = $wizard->build_page_prompt( $page_type, $answers );
+
+		return [
+			'system' => $system,
+			'prompt' => $prompt,
+		];
+	}
+
+	/**
+	 * Get available template categories with templates.
+	 *
+	 * @return array Categories with their templates.
+	 */
+	public function get_available_templates() {
+		$loader = $this->get_templates_loader();
+		if ( ! $loader ) {
+			return [];
+		}
+
+		$categories = $loader->get_categories();
+		$result     = [];
+
+		foreach ( $categories as $slug => $label ) {
+			$templates = $loader->get_templates_by_category( $slug );
+			if ( ! empty( $templates ) ) {
+				$result[ $slug ] = [
+					'label'     => $label,
+					'templates' => $templates,
+				];
+			}
+		}
+
+		return $result;
+	}
+
+	/**
+	 * Get available page types from the wizard.
+	 *
+	 * @return array Page types with their configurations.
+	 */
+	public function get_available_page_types() {
+		if ( ! class_exists( 'AiMentor_Page_Wizard' ) ) {
+			return [];
+		}
+
+		$wizard = new AiMentor_Page_Wizard();
+		return $wizard->get_page_types();
 	}
 }

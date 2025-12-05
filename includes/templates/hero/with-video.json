@@ -1,0 +1,94 @@
+{
+	"name": "Hero with Video",
+	"description": "Centered hero section with embedded video below the CTA.",
+	"widgets_used": ["heading", "text-editor", "button", "video"],
+	"elements": [
+		{
+			"id": "hvid001",
+			"elType": "section",
+			"settings": {
+				"structure": "10",
+				"padding": {
+					"unit": "px",
+					"top": "80",
+					"right": "20",
+					"bottom": "40",
+					"left": "20"
+				}
+			},
+			"elements": [
+				{
+					"id": "hvid002",
+					"elType": "column",
+					"settings": {
+						"_column_size": 100
+					},
+					"elements": [
+						{
+							"id": "hvid003",
+							"elType": "widget",
+							"widgetType": "heading",
+							"settings": {
+								"title": "See How It Works",
+								"header_size": "h1",
+								"align": "center",
+								"typography_font_size": {
+									"unit": "px",
+									"size": 44
+								},
+								"typography_font_weight": "700"
+							}
+						},
+						{
+							"id": "hvid004",
+							"elType": "widget",
+							"widgetType": "text-editor",
+							"settings": {
+								"editor": "<p>Watch our quick demo to discover how easy it is to get started. In just 2 minutes, you'll understand why thousands trust our solution.</p>",
+								"align": "center",
+								"text_color": "#666666"
+							}
+						},
+						{
+							"id": "hvid005",
+							"elType": "widget",
+							"widgetType": "button",
+							"settings": {
+								"text": "Try It Now",
+								"align": "center",
+								"size": "lg",
+								"link": {
+									"url": "#signup",
+									"is_external": false,
+									"nofollow": false
+								}
+							}
+						},
+						{
+							"id": "hvid006",
+							"elType": "widget",
+							"widgetType": "spacer",
+							"settings": {
+								"space": {
+									"size": 40,
+									"unit": "px"
+								}
+							}
+						},
+						{
+							"id": "hvid007",
+							"elType": "widget",
+							"widgetType": "video",
+							"settings": {
+								"video_type": "youtube",
+								"youtube_url": "https://www.youtube.com/watch?v=XHOmBV4js_E",
+								"aspect_ratio": "169",
+								"play_icon": "yes"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}
