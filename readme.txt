@@ -2,9 +2,9 @@
 Contributors: jagjourney
 Tags: elementor, ai, grok, page builder, xai
 Requires at least: 5.0
-Tested up to: 6.4
+Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.8.2
+Stable tag: 1.8.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -113,6 +113,10 @@ Absolutely. Use the **Auto-Insert** toggle in the settings to decide if generate
 3. Generate content in middle canvas
 
 == Changelog ==
+= 1.8.3 =
+* Verified compatibility with WordPress 6.9 and updated tested-up-to metadata.
+* Bumped Elementor and Elementor Pro tested-up-to versions to 3.27.
+
 = 1.8.2 =
 * Enriched the Elementor modal payload so both the editor and settings scripts receive enabled quick-action metadata, prompt/system defaults, and lookup helpers.
 * Localized new quick-action toolbar labels, running-state messages, and missing-content prompts for translators.

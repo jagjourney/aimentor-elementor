@@ -4,16 +4,16 @@
  * Plugin URI: https://jagjourney.com/
  * Update URI: https://github.com/jagjourney/aimentor-elementor
  * Description: 🚀 FREE AI Page Builder - Generate full Elementor layouts with AiMentor. One prompt = complete pages!
- * Version: 1.8.2
+ * Version: 1.8.3
  * Author: AiMentor
  * Author URI: https://jagjourney.com/
  * License: GPL v2 or later
  * Text Domain: aimentor
  * Requires at least: 5.0
- * Tested up to: 6.4
+ * Tested up to: 6.9
  * Requires PHP: 7.4
- * Elementor tested up to: 3.18
- * Elementor Pro tested up to: 3.18
+ * Elementor tested up to: 3.27
+ * Elementor Pro tested up to: 3.27
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -27,7 +27,7 @@ if ( ! defined( 'AIMENTOR_PLUGIN_VERSION' ) ) {
          * Updated for each tagged release so dependent systems can detect
          * available updates and WordPress can surface the correct metadata.
          */
-        define( 'AIMENTOR_PLUGIN_VERSION', '1.8.2' );
+        define( 'AIMENTOR_PLUGIN_VERSION', '1.8.3' );
 }
 
 if ( ! defined( 'AIMENTOR_PLUGIN_FILE' ) ) {
