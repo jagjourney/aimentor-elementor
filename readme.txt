@@ -4,7 +4,7 @@ Tags: elementor, ai, grok, page builder, xai
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 2.2.0
+Stable tag: 2.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -113,6 +113,20 @@ Absolutely. Use the **Auto-Insert** toggle in the settings to decide if generate
 3. Generate content in middle canvas
 
 == Changelog ==
+= 2.3.0 =
+* **Pro Extensibility**: Added comprehensive hooks system for AiMentor Pro add-on integration.
+* Introduced `AiMentor_Pro_Hooks` class with 20+ action and filter hooks for Pro features.
+* Added generation hooks: `aimentor_before_generation`, `aimentor_after_generation`, `aimentor_generation_prompt`, `aimentor_generation_result`.
+* Added provider hooks: `aimentor_available_providers`, `aimentor_provider_settings`.
+* Added branding hooks: `aimentor_branding`, `aimentor_admin_menu`, `aimentor_widget_settings`.
+* Added pipeline hooks: `aimentor_pipeline_triggers`, `aimentor_pipeline_actions`, `aimentor_pipeline_before_run`, `aimentor_pipeline_after_run`.
+* Added template hooks: `aimentor_section_templates`, `aimentor_page_types`.
+* Added analytics hooks: `aimentor_track_usage`, `aimentor_track_generation`.
+* Added team/agency hooks: `aimentor_user_capabilities`, `aimentor_team_limits`.
+* Added export/import hooks: `aimentor_export_data`, `aimentor_import_data`.
+* Helper functions: `aimentor_is_pro_active()`, `aimentor_get_branding()`, `aimentor_track_event()`, `aimentor_user_can()`, `aimentor_get_team_limits()`.
+* Pro add-on can now seamlessly extend core functionality with white-label, analytics, team management, and agency features.
+
 = 2.2.0 =
 * **Automation Suite**: Complete automation system with pipelines, calendar, and integrations.
 * Added Content Pipeline system with 6 trigger types (schedule, manual, webhook, post publish, form submit, RSS).

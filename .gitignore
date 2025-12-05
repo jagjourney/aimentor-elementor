@@ -8,3 +8,6 @@ includes/*.log
 # No need to send up for Company docs.
 
 /docs/*
+
+# Pro plugin (separate distribution)
+../aimentor-elementor-pro/
