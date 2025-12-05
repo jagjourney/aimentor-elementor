@@ -7,4 +7,4 @@ includes/*.log
 
 # No need to send up for Company docs.
 
-/docs/
+/docs/*
