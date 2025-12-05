@@ -4,7 +4,7 @@ Tags: elementor, ai, grok, page builder, xai
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 2.0.0
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -113,6 +113,21 @@ Absolutely. Use the **Auto-Insert** toggle in the settings to decide if generate
 3. Generate content in middle canvas
 
 == Changelog ==
+= 2.1.0 =
+* **AI Capabilities Expansion**: Major feature release with image generation, SEO integration, multi-language support, and tone profiles.
+* Added AI image generation support via DALL-E 3 and Stability AI (SDXL).
+* Image generator supports multiple sizes (square, landscape, portrait) and style presets.
+* Integrated SEO optimization with Yoast SEO and Rank Math auto-detection.
+* AI-powered meta title, description, and focus keyword generation.
+* Added content SEO analysis with keyword density and readability suggestions.
+* Introduced multi-language support with 30+ languages including RTL support.
+* Content translation capabilities for both text and full Elementor layouts.
+* Language detection for existing content.
+* Created 12 predefined voice/tone profiles (Professional, Friendly, Casual, Formal, Playful, Inspirational, Technical, Luxury, Bold, Empathetic, Storytelling, Minimalist).
+* Custom tone profile creation from sample content.
+* Tone analysis to detect existing content style.
+* Content rewriting in any selected tone while preserving meaning.
+
 = 2.0.0 =
 * **Section Templates & Page Wizard**: Major expansion with pre-built section templates and guided page generation.
 * Added 12 professionally designed section templates (hero, features, testimonials, pricing, CTA, FAQ, stats, contact, team).

@@ -4,7 +4,7 @@
  * Plugin URI: https://jagjourney.com/
  * Update URI: https://github.com/jagjourney/aimentor-elementor
  * Description: 🚀 FREE AI Page Builder - Generate full Elementor layouts with AiMentor. One prompt = complete pages!
- * Version: 2.0.0
+ * Version: 2.1.0
  * Author: AiMentor
  * Author URI: https://jagjourney.com/
  * License: GPL v2 or later
@@ -27,7 +27,7 @@ if ( ! defined( 'AIMENTOR_PLUGIN_VERSION' ) ) {
          * Updated for each tagged release so dependent systems can detect
          * available updates and WordPress can surface the correct metadata.
          */
-        define( 'AIMENTOR_PLUGIN_VERSION', '2.0.0' );
+        define( 'AIMENTOR_PLUGIN_VERSION', '2.1.0' );
 }
 
 if ( ! defined( 'AIMENTOR_PLUGIN_FILE' ) ) {
@@ -1102,6 +1102,12 @@ require_once AIMENTOR_PLUGIN_DIR . 'includes/schema/class-generation-pipeline.ph
 // Section templates and page wizard (Phase 2 expansion).
 require_once AIMENTOR_PLUGIN_DIR . 'includes/templates/class-section-templates.php';
 require_once AIMENTOR_PLUGIN_DIR . 'includes/templates/class-page-wizard.php';
+
+// AI capabilities (Phase 3 expansion).
+require_once AIMENTOR_PLUGIN_DIR . 'includes/ai/class-image-generator.php';
+require_once AIMENTOR_PLUGIN_DIR . 'includes/ai/class-seo-integration.php';
+require_once AIMENTOR_PLUGIN_DIR . 'includes/ai/class-language-support.php';
+require_once AIMENTOR_PLUGIN_DIR . 'includes/ai/class-tone-profiles.php';
 
 // Providers.
 require_once AIMENTOR_PLUGIN_DIR . 'includes/providers/class-aimentor-provider-interface.php';
